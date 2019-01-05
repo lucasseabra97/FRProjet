@@ -1,0 +1,18 @@
+-eng
+ip 3100:0:0:0::1/64
+save
+-admin
+ip 3100:0:0:1::1/64
+save
+-voIP
+ip 3100:0:0:2::2/64
+save
+-Videoconf
+ip 3100:0:0:3::2/64
+save
+-DMZ
+ip 3100:0:0:4::1/64
+save
+-data
+ip 3100:0:0:5::1/64
+save

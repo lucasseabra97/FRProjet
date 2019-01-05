@@ -1,0 +1,89 @@
+vlan database
+ vlan 2
+ vlan 3
+ vlan 4
+ vlan 5
+ vlan 6
+ vlan 7
+ exit
+
+conf t
+ ip routing
+ ipv6 unicast-routing
+ 
+ ip dhcp excluded-address 10.100.4.61 10.100.4.254
+ ip dhcp pool 1
+ network 10.100.4.0 255.255.255.0
+ default-router 10.100.4.254
+ exit
+   
+ int vlan 2
+ ip address 10.100.0.254 255.255.255.0
+ ip address 110.0.0.78 255.255.255.240 secondary
+ ipv6 add 3100:0:0:1::1/126
+ ipv6 rip 1 enable
+ no autostate
+ interface Vlan 3
+ ip address 10.100.2.254 255.255.255.0
+ ipv6 add 3100:0:0:2::1/126
+ ipv6 rip 1 enable
+ no autostate
+ interface Vlan 4
+ ip address 10.100.3.253 255.255.255.0
+ ip address 110.0.0.174 255.255.255.240 secondary
+ ipv6 add 3100:0:0:3::2/126
+ ipv6 rip 1 enable
+ no autostate
+ interface Vlan 5
+ ipv6 add 3100:0:0:0::2/126
+ ipv6 rip 1 enable
+ ip address 10.100.0.254 255.255.255.0
+ ip address 110.0.0.254 255.255.255.192 secondary
+ no autostate
+ interface Vlan 6
+ ipv6 add 3100:0:0:5::1/126
+ ipv6 rip 1 enable
+ ip address 10.100.5.254 255.255.255.0
+ ip address 110.0.0.190 255.255.255.192 secondary
+ no autostate
+ interface Vlan 7
+ ipv6 add 3100:0:0:4::1/126
+ ipv6 rip 1 enable
+ ip address 10.100.4.254 255.255.255.0
+ ip address 110.0.0.62 255.255.255.192 secondary
+ no autostate
+ int f0/0
+ ipv6 add 3100:0:0:6::18/64
+ ipv6 rip 1 enable
+ ip add 10.100.6.17 255.255.255.252
+ no shut
+ int f0/1
+ ipv6 add 3100:0:0:6::9/126
+ ipv6 rip 1 enable
+ ip add 10.100.6.9 255.255.255.252
+ no shut 
+ int f1/1
+ no switchport
+ ipv6 add 3100:0:0:6::1/126
+ ipv6 rip 1 enable
+ ip add 10.100.6.1 255.255.255.252
+ no shut
+ 
+ int f1/3
+ switchport mode trunk
+ no shut
+ int f1/2
+ switchport mode trunk
+ no shut
+ int f1/4
+ switchport access Vlan 6
+ no shut
+ int f1/5
+ switchport access Vlan 7
+ no shut
+ exit
+ router rip
+ version 2
+ network 10.100.0.0
+ no auto-summary
+ end

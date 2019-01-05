@@ -1,0 +1,4 @@
+should not be configured on FastEthernet0/0, a subnet router anycast
+3100:0:0:6::18/126 
+
+TIRAR PORTAS GW DIFERENTES NAS VLANS

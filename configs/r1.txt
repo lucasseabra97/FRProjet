@@ -1,0 +1,34 @@
+conf t
+    ipv6 unicast-routing
+    ip route 0.0.0.0 0.0.0.0 110.0.1.1
+    int f0/0
+    ip nat inside
+    ipv6 add 3100:0:0:6::10/126
+    ip add 10.100.6.10 255.255.255.252
+    ipv6 rip 1 enable
+    ipv6 rip 1 default-information originate
+    no shut
+    int f0/1
+    ip nat inside
+    ipv6 add 3100:0:0:6::14/126
+    ip add 10.100.6.14 255.255.255.252
+    ipv6 rip 1 enable
+    ipv6 rip 1 default-information originate
+    no shut
+    int f1/0
+    ip add 110.0.1.2 255.255.255.252
+    ip nat outside
+    no shut
+    exit
+    ip nat inside source list 2 pool MYNATPOOL overload
+    access-list 2 permit 10.100.0.0 0.0.255.255
+    access-list 2 permit 192.168.0.0 0.0.15.255
+    ip nat pool MYNATPOOL 110.0.0.224 110.0.0.237 netmask 255.255.255.240
+    router rip
+    version 2
+    network 10.100.0.0
+    network 100.0.0.0
+    no auto-summary
+    default-information originate
+    end
+write

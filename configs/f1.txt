@@ -1,0 +1,27 @@
+vlan database
+ vlan 2
+ vlan 5
+ exit
+
+conf t
+ ip routing
+ int f1/0
+ switchport access vlan 5
+ no shut
+ int f1/2
+ switchport mode trunk
+ no shut
+ int f1/3
+ switchport mode trunk
+ no shut
+ int f1/1
+ switchport access vlan 2
+ no shut
+ exit
+ router rip
+ version 2
+ network 10.100.0.0
+ network 10.100.1.0
+ no auto-summary
+ end
+write

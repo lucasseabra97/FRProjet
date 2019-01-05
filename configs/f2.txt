@@ -1,0 +1,28 @@
+vlan database
+ vlan 3
+ vlan 4
+ exit
+
+conf t
+ ipv6 unicast-routing
+ ip routing 
+ int f1/0
+ switchport access vlan 3
+ no shut
+ int f1/2
+ switchport mode trunk
+ no shut
+ int f1/3
+ switchport mode trunk
+ no shut
+ int f1/1
+ switchport access vlan 4
+ no shut
+ exit
+ router rip
+ version 2
+ network 10.100.2.0 
+ network 10.100.3.0 
+ no auto-summary
+ end
+write

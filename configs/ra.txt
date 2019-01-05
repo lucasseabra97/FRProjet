@@ -1,0 +1,23 @@
+conf t 
+    ipv6 unicast-routing
+    int f0/0
+    ipv6 add 3100:0:0:6:0::2/126
+    ipv6 rip 1 enable
+    ip add 10.100.6.2 255.255.255.252
+    no shut
+    int f0/1
+    ipv6 add 3100:0:0:6::6/126
+    ipv6 rip 1 enable
+    ip add 10.100.6.6 255.255.255.252
+    no shut
+    int f1/0
+    ip add 192.168.0.1 255.255.240.0 
+    no  shut
+    exit
+    router rip
+    version 2
+    network 192.168.0.0 
+    network 10.100.0.0
+    no auto-summary
+    end
+write

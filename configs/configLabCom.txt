@@ -1,0 +1,9 @@
+#write under this
+# The primary network interface
+allow-hotplug eth0
+iface eth0 inet static
+address 10.100.5.10
+network 10.100.5.0
+netmask 255.255.255.0
+bradcast 10.100.5.255
+gateway 10.100.5.254

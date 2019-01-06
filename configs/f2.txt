@@ -7,19 +7,15 @@ conf t
  ipv6 unicast-routing
  ip routing 
  int f1/0
- ipv6 enable
  switchport access vlan 3
  no shut
  int f1/2
- ipv6 enable
  switchport mode trunk
  no shut
  int f1/3
- ipv6 enable
  switchport mode trunk
  no shut
  int f1/1
- ipv6 enable
  switchport access vlan 4
  no shut
  exit

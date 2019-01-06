@@ -65,21 +65,18 @@ conf t
  ip add 10.100.6.17 255.255.255.252
  no shut
  int f0/1
- 
  ipv6 enable
  ipv6 add 3100:0:0:6::9/126
  ipv6 rip 1 enable
  ip add 10.100.6.9 255.255.255.252
  no shut 
  int f1/1
- 
  no switchport
  ipv6 enable
  ipv6 add 3100:0:0:6::1/126
  ipv6 rip 1 enable
  ip add 10.100.6.1 255.255.255.252
  no shut
- 
  int f1/3
  switchport mode trunk
  no shut
@@ -96,9 +93,11 @@ conf t
  switchport access Vlan 6
  no shut
  int f1/7
-
  switchport access Vlan 7
  no shut
+ int f1/8
+ 
+ switchport access Vlan 6
  exit
  router rip
  version 2

@@ -26,8 +26,9 @@ conf t
     no shut
     exit
     ip nat inside source list 2 pool MYNATPOOL overload
+    ip nat inside source list 3 pool MYNATPOOL overload
     access-list 2 permit 10.100.0.0 0.0.255.255
-    access-list 2 permit 192.168.0.0 0.0.15.255
+    access-list 3 permit 192.168.0.0 0.0.15.255
     ip nat pool MYNATPOOL 110.0.0.224 110.0.0.237 netmask 255.255.255.240
     router rip
     version 2

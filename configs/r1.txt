@@ -1,7 +1,9 @@
 conf t
     ipv6 unicast-routing
     ip route 0.0.0.0 0.0.0.0 110.0.1.1
+    ipv6 route ::/0 3100:0:0:6::22
     int f0/0
+    ipv6 enable
     ip nat inside
     ipv6 add 3100:0:0:6::10/126
     ip add 10.100.6.10 255.255.255.252
@@ -9,6 +11,7 @@ conf t
     ipv6 rip 1 default-information originate
     no shut
     int f0/1
+    ipv6 enable
     ip nat inside
     ipv6 add 3100:0:0:6::14/126
     ip add 10.100.6.14 255.255.255.252
@@ -16,6 +19,7 @@ conf t
     ipv6 rip 1 default-information originate
     no shut
     int f1/0
+    ipv6 enable
     ipv6 add 3100:0:0:6::21/126
     ip add 110.0.1.2 255.255.255.252
     ip nat outside

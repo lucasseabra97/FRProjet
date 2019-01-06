@@ -5,16 +5,20 @@ vlan database
 
 conf t
  ip routing
+ ipv6 unicast-routing
  int f1/0
  switchport access vlan 5
  no shut
  int f1/2
+ ipv6 enable
  switchport mode trunk
  no shut
  int f1/3
+ ipv6 enable
  switchport mode trunk
  no shut
  int f1/1
+ ipv6 enable
  switchport access vlan 2
  no shut
  exit

@@ -1,13 +1,18 @@
 conf t
+ ipv6 unicast-routing    
  ip route 100.0.0.0 255.255.255.0 100.0.0.1
  ip route 110.0.0.0 255.255.255.0 110.0.1.2
  int f0/0
+ ipv6 enable
  ipv6 add 3100:0:0:6::22/126
  ip add 110.0.1.1 255.255.255.252
  no shut
  int f0/1 
+ ipv6 enable
  ipv6 add 3000:A:A:A::1/64
  ip add 100.0.0.254 255.255.255.0
  no shut
+ exit
+ ipv6 route 3100::/58 3100:0:0:6::21
  end
 write

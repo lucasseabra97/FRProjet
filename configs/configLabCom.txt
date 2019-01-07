@@ -1,3 +1,5 @@
+
+gedit /etc/network/interfaces
 #write under this
 # The primary network interface
 allow-hotplug eth0

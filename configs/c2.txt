@@ -47,7 +47,7 @@ conf t
  ipv6 rip 1 enable
  ip add 10.100.6.13 255.255.255.252
  no shut
- int f1/1
+ int f1/1\
  no switchport
  ipv6 enable
  ipv6 add 3100:0:0:6::5/126
